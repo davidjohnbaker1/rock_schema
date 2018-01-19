@@ -1,0 +1,31 @@
+#!/usr/bin/perl
+# vim: ts=3
+
+use strict;
+
+my $lastnumber = "x";
+
+while (my $line = <>) {
+	chomp $line;
+	if ($line =~ /^\*\*/) {
+		if ($line =~ /^\*\*semits/) {
+			print "**sint\n";
+			next;
+		} else {
+			die "Cannot process $line data";
+		}
+	}
+	if ($line !~ /^[-+\d]/) {
+		print "$line\n";
+		next;
+	}
+	if ($lastnumber eq "x") {
+		$lastnumber = $line;
+		print ".\n";
+		next;
+	}
+	my $value = $line - $lastnumber;
+	$lastnumber = $line;
+	print "$value\n";
+}
+

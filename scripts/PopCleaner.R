@@ -1,0 +1,17 @@
+setwd("/Users/davidjohnbaker/Desktop/projects/relational_network/")
+list.files()
+RollingStone <- read.csv("TheList.csv",header = FALSE)
+View(RollingStone)
+Temp.Clerq <- read.csv("The200List.csv", header=FALSE)
+View(Temp.Clerq)
+Temp.Clerq$Encoded <- "YES"
+library(plyr)
+Temp.Clerq <- rename(Temp.Clerq, c("V1"="filename", "V2"="Rank","V3"="SongName","V4"="Artist","V5"="Year","V6"="Inclusion"))
+RollingStone <- rename(RollingStone, c("V1"="Rank","V2"="SongName","V3"="Artist","V4"="Year"))
+View(RollingStone)
+head(Temp.Clerq)
+combinedRock <- merge(RollingStone,Temp.Clerq, by="Rank")
+View(combinedRock)
+View(combinedRock)
+Songs <- combinedRock[combinedRock$Encoded=!"YES",]
+tail(combinedRock)

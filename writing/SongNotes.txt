@@ -1,0 +1,119 @@
+List of Schemas
+
+* Network is unidirectional
+* 10 and 3 would be indicitive of minor pentatonic space
+
+==Critique==
+
+*Significance is that if we can find significantly used schemas
+*Everything has a place in the theory 
+*Application is in identifying counterintuitive examples of the schema
+*Explaining the 
+*It attempts to take out the white noice
+	V chord has intrinsic function
+	If you have to make claim for repitoire
+	Need to separate schematic positional stuff from the way that it actually behaves
+	Once we finish this, essentially are eliminating no
+	Doesn't matter end listeneing experiences, better described with labled network
+	Pretend for sake of this experiment that chords don't have botton up function 
+	Especially approrpriate because we have these modal things
+	More stright forward in classical music, position finding is more straight forward
+	It's harder to position find in something like night moves 
+	Pretending that ears don't have to position find 
+
+Just like identifiying the schema in classical music, we are identifying ht compositional logic
+behind picking those chords
+In classical music, that's all were trying to desribe, the 'logic' of the chord progressions
+Trying to talk about things based on Roman Numerals is not needed
+The logic comes from the network approach rather than the chords position in the scale 
+Pretend for a minute that we should ignore those funcitn
+	they MIGHT exist , function as category still possible, 
+
+Function is overdetermined, all we are looking for is the reason taht one chord went to another
+we can give top down or bottom up 
+Let's ignore bottom up for hte purposes of this study
+IF after stripping away the top down, there is still strong evidence of bottom up, then it's the only optino left over
+
+For a full functional circut it needs to be over 2 chords 
+	So vamp of I IV I IV will not work, trivial, get ignored 
+	Needs to have 3 or 4 chords, intervals sum to multiple of 12 
+	We replace Nobiles functional circut with sequence of 3 or more chords
+	Funtion isn't a thing until 3 sonorities are introduced???
+
+Our functional circuts are based around the temperly declerque model 
+We take that as a starting point
+
+If you are looking at only terms of scale degree motion, IV V I outnumbers V IV I (retrogression)
+BUT If you consider bVII IV I to be the same thing as V IV I, then our 3 gram outnumbers the progressive version (which is in accordance with the stephenson idea that we have retrogressive) by a significant **** portion. 
+
+It's musically intuitite, guitar composers go up all the way more than they go around the fretboard
+
+Problem: bVI bVII I is clealry different than from I ii iii, but they would show up the same in our theory. 
+It's the performacne, not the recording.
+At that point its the kinesthetic engagement with the instrument.
+
+We don't care if the two or three grams are vampable bc they dont exist in %12 
+
+Repititions of the same chord if it's not based on hypermeter, then why would we consider
+repititons of same chord to be a transition at all.
+
+Maybe Blues/Double Plagal is just a three gram becaues it repeats the I chord.
+V VI I I, musically is 4, our theory is just a 3 gram
+
+Can get around blues and double plagal as same thing, chord reps get cancelled out
+
+
+They're essentially coronas of the 4gram network.
+They're way's of getting around rather than a full cycle.
+
+*This is entirely top down way of thinking
+*Schematic approach to this
+
+House of Rising Sun and After midnight are same 2 gram
+	3 - 2 :|
+	Rising Sun uses minor i 
+	After Midnight uses Major I
+	This is an example how our system gets around the problem of modal mixture
+
+==Double Plagal==
+Double Plagal, Nicole Biamonte, 2010, Sympathy for the Devil
+Double Plagal, Nicole Biamonte, 2010, Night Moves, Bob Seger
+Prototype
+	In C: C | Bb | F | C :| 
+	* Any rotations of that we would consider to be equivilent 
+	Notation: 10 | 7 | 7 | 0 :| 
+	Normal: 0 | 10 | 7 | 7 :|
+	* Any rotation of that would be considered to be a double plagal network
+--Subset network for the blues cadence
+Night Moves - Bob Seger 
+==Blues Cadence==
+Includes 2-Gram Subset
+	In C: C | Bb | F | F :|
+	* Just changing last chord to F changes 2 intervals, enter and exit
+	Notation: 10 | 7 | 0 | 7 :|
+Adding up to any multiple of 12 means that the four chord progression can be vampable
+	There can not be a 3-gram subset of a 4-gram if both are vampable, they add to same amount
+	if one is different, the other can't add back up to %12
+Focus on four chords in a row that are capable of being turned into a vamp?
+** Any blues tune / Sweet Home Alabama **
+!! Rotation of I IV V I 
+
+** Should pick a normal form of this, set it up as prime form of a set
+** As compact to the left as possible 
+==Aeolean Cadence==
+
+bVI bVII I I 
+Monkey Man Chorus
+DB find Iron Maiden Song 
+
+==The 50s Progression==
+I vi IV V 
+	Notation: 9 | 8 | 2 | 5 :|
+Vampable 
+
+==Sensitive Female Cadence==
+
+I V vi IV 
+	Notation: 7 | 2 | 8 | 7 :|
+Vampable
+

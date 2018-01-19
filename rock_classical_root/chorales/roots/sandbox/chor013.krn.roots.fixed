@@ -1,0 +1,155 @@
+!!!COM:	Bach, Johann Sebastian
+!!!CDT:	1685/02/21/-1750/07/28/
+!!!OTL@@DE:	Allein zu dir, Herr Jesu Christ
+!!!SCT:	BWV 33/6
+!!!PC#:	13
+!!!AGN:	chorale
+**kern
+*ICvox
+*
+*>[A,A,B]
+*>norep[A,B]
+*>A
+*
+*k[]
+*a:
+*M4/4
+*met(C)
+*MM100
+A
+X
+=1
+C
+E
+F
+B
+C
+X
+C
+A
+=2
+G
+X
+G
+A
+D
+C
+G
+=3
+C
+rest
+C
+=4
+G
+G
+X
+A
+E
+X
+E
+E
+=5
+A
+F#
+G#
+A
+G#
+E
+A
+X
+=6
+D
+X
+E
+X
+E
+A
+=:|!
+*>B
+A
+=7
+D
+A
+B
+D
+E
+E
+A
+C
+=8
+D
+X
+X
+A
+D
+E
+=9
+F
+A
+B
+G
+C
+X
+C
+=10
+D
+E
+A
+C
+X
+=11
+G
+G
+A
+X
+E
+E
+F
+A
+=12
+D
+X
+X
+D
+A
+F
+=13
+G
+X
+C
+X
+C
+X
+G
+=14
+C
+C
+D
+D
+X
+G#
+=15
+A
+B
+A
+E
+D
+B
+F
+X
+A
+=16
+B
+E
+E
+A
+==
+*-
+!!!hum2abc: -Q ''
+!!!title: @{PC#}. @{OTL@@DE}
+!!!YOR1: 371 vierstimmige Choralges&auml;nge von Johann Sebastian Bach, 
+!!!YOR2: 4th ed. by Alfred D&ouml;rffel (Leipzig: Breitkopf und H&auml;rtel, 
+!!!YOR2: c. 1875). 178 pp. Plate "V.A.10".  reprint: J.S. Bach, 371 Four-Part 
+!!!YOR4: Chorales (New York: Associated Music Publishers, Inc., c.1940).
+!!!EED:  Craig Stuart Sapp
+!!!EEV:  2009/05/22
