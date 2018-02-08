@@ -1,0 +1,12 @@
+
+In Conversion Process
+
+Need to get rid of extensions and any sort of other chord information besides Chord, root, inversion quality
+
+a for augmented needs to be switched to 
+a has to be a + 
+d7 should just be removed , also d9 
+viio7 should be for h7 
+viioD7 for x7 
+s for suspensions should be removed and anything behind it
+Other symbols!? V11 means IV over 5? 

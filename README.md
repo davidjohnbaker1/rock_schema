@@ -15,6 +15,10 @@ Repo contains data, code, text for relational project.
 * [ ] Whole process then gets repeated on the McGill dataset 
 * [ ] Statistical test to see if we have found something meaningful 
 
+## Scratch
+
+-- Clean up directory!!
+
 ### Old TO DO 
 
 Rock Music To Do List
