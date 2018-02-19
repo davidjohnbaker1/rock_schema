@@ -26,24 +26,27 @@ chord_by_chord <- read_csv("chord_by_chord_nospace.csv", col_names = FALSE)
 
 rock <- data.table(chord_by_chord)
 setnames(rock, c("X1", "X2", "X3", "X4", "X5", "X6", "X7","X8"),
-         c("Song","Artist","Year","Time","Chord","AbsoluteTonic","RomanNumeral","Quality"))
+         c("Song","Artist","Year","Time","Chord","RelativeTonic","RomanNumeral","Quality"))
 
 #======================================================================================================
 # Create Data in McGill 
 #--------------------------------------------------
 # Check number of songs with NonHarmonic, Remove
+# Used bash/terminal to take chord and create absolute tonic variable
 rock
-rock[, .(Names = unique(AbsoluteTonic))]
+rock[, .(Names = unique(RelativeTonic))]
+rock[RelativeTonic == "NonHarmonic"]
 629/30712 # About 2% are non harmonic, remove
-rock <- rock[AbsoluteTonic != "NonHarmonic"]
-rock[, AbsoluteTonic := as.numeric(AbsoluteTonic)]
-
+rock <- rock[RelativeTonic != "NonHarmonic"]
+rock[, RelativeTonic := as.numeric(RelativeTonic)]
+unique(rock$Song)
+# Only interested in movements
+rock[1:20]
 # Add Root motion Colum
-rock[, RootMotion := diff(AbsoluteTonic)]
+rock[, RootMotion := diff(RelativeTonic)]
 # Convert all to Positive Intergers
-
+rock
 rock$PosRootMotion <- with(rock, ifelse(RootMotion >= 0 , RootMotion , RootMotion + 12))
-## ARE WE WORRIED HERE THAT THERE IS THE BETWEEN SONG PROBLEM HERE?!?!?
 
 table(rock$PosRootMotion) ## MAKE A TABLE OF THIS , Most likely next chord in ascending semitones from the root we are now standing on
 #======================================================================================================
@@ -148,7 +151,7 @@ rock <-  rock[Song != "Help!"][Song != "BornToBeWild"][Song != "BeMyBaby"][Song 
 # Descriptives 
 unique(rock$Song)
 # 710 Different Songs in Database
-
+# DOUBLE CHECK THE OVERLAP, DAVE 
 
 #--------------------------------------------------
 # Plots of Datasets
@@ -236,10 +239,42 @@ bigCount[,Schema:=paste0(Prior, "-", V1)]
 bigCount[order(-N)][1:30]
 top30 <- bigCount[order(-N)][1:30]
 top30[, RealIndex := .I]
+#--------------------------------------------------
+# Make Chart, ungrouped
+
+bigCount$Prior <- as.numeric(bigCount$Prior)
+bigCount$V1 <- as.factor(bigCount$V1)
+p <- ggplot(bigCount, aes(x = Prior, y = N, fill = V1))
+p + geom_bar(stat = "identity") + 
+  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts") 
+
+#--------------------------------------------------
+# Remove Involutions
+str(bigCount)
+bigCount$N <- as.numeric(bigCount$N)
+bigCount$V1 <- as.numeric(as.character(bigCount$V1))
+bigCount[, Added := Prior + V1]
+bigCount[Added == 12]
+
+bigCountNoInvo <- bigCount[Added != 12]
+bigCountNoInvo[order(-N)][1:100]
+#======================================================================================================
+bigCountNoInvo
+str(bigCountNoInvo)
+#bigCountNoInvo$V1 <- as.integer(bigCount$V1)
+#bigCountNoInvo$V1 <- as.factor(bigCount$V1)
+q <- ggplot(bigCountNoInvo, aes(x = Prior, y = N, fill = V1))
+q + geom_bar(stat = "identity") + 
+  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts, No Involution") 
+
+# Make legend so that all 6s are the same
 
 all.mcgill <- bigCount[order(-N)]
 all.mcgill[, RealIndex := .I]
 
+# ggplot(bigCountNoInvo[N > 100], aes(x = V1, y = Prior, size = N)) + geom_point()
+
+pie(bigCountNoInvo[Prior == 10])
 
 ggplot(data=top30, aes(x=RealIndex, y=N)) + geom_bar(stat="identity") 
 ggplot(data=all.mcgill, aes(x=RealIndex, y=N)) + 
@@ -255,7 +290,6 @@ rbind(tester, tester1)
 round(table(rocky$PosRootMotion[rownameswhererootequalstenOne])/sum(table(rocky$PosRootMotion[rownameswhererootequalstenOne])),2)
 
 pie(table(rocky$PosRootMotion[rownameswhererootequalstenOne]))
-
 
 
 #======================================================================================================
@@ -289,8 +323,54 @@ fourseventenDT$NAME <- data.table(RN = c("I","II","IV (Blues Cadence)","V","bIII
 
 
 pie(fourseventenDT$N, labels = fourseventenDT$NAME)
+#======================================================================================================
+# Got Schemas from DT, looking for Roman Numeral breakdowns with McGill
 
+# Given each schema (10-7) show roman numerals 
+# if consecutive 10 then 7 (after 0s removed), print RN for the first one 
 
+#======================================================================================================
+# TOP SCHEMAS
+
+# SCHEMA AND N 
+# MAKE THIS A BEAUTIFUL TABLE, SEND TO JACOB
+
+stargazer::stargazer(bigCountNoInvo[, Schema, N][order(-N)][1:15], summary = FALSE)
+
+bigCountNoInvo[order(-N)][1:15]
+
+rock <- rock[PosRootMotion != 0]
+rs1.mg <- rock[  , .I[PosRootMotion == "10"]]
+rs1.two.mg <- rs1.mg + 1
+initial.ten <- rock[rs1.two.mg]
+pie(table(initial.ten[PosRootMotion == 7]$RomanNumeral), main = "10 - 7 Schema")
+# What the The roman numeral is shoing is what second chord would be 
+# Remove labels on everything but the main blobs ("Double Plagal (I-bVII-IV)" and "Blues Cadence (V-IV-I)") 
+
+rs1.1.mg <- table(rock$RomanNumeral[rs1.two.mg])
+pie(rs1.1.mg)
+# We think this would clarify itself at a four chord level 
+
+rs5.mg <- rock[  , .I[PosRootMotion == "5"]]
+rs5.two.mg <- rs5.mg + 1
+initial.five <- rock[rs5.two.mg]
+pie(table(initial.five[PosRootMotion == 5]$RomanNumeral), main = "5 - 5 Schema")
+
+rs1.1.mg <- table(rock$RomanNumeral[rs1.two.mg])
+pie(rs1.1.mg)
+
+rs7.mg <- rock[  , .I[PosRootMotion == "7"]]
+rs7.two.mg <- rs7.mg + 1
+initial.seven <- rock[rs7.two.mg]
+pie(table(initial.seven[PosRootMotion ==10]$RomanNumeral), main = "7 - 10 Schema")
+
+# MAKE TWO VERSIONS OF TEH OVERLEAF TABLE FOR DRAMATIC EFFECT
+
+# Print top six with their sisters 
+# Temperley juxtaposition chart !
+# Reproduce chart in overleaf
+
+# Start on Four Chord Progressions?!?!?!
 #======================================================================================================
 # Save that shit
 write.csv(rock[,c(10,7)], "McGillBillBoard_PosRootMotion.krn")
@@ -298,5 +378,6 @@ write.csv(rock[,c(10,7)], "McGillBillBoard_PosRootMotion.krn")
 
 #======================================================================================================
 # Pop Docket 
+# * Make Figure Folder in github, send to Jacob
 #======================================================================================================
 # Put in a null token whenever song starts to eliminate boundry problem
