@@ -242,18 +242,27 @@ top30[, RealIndex := .I]
 #--------------------------------------------------
 # Make Chart, ungrouped
 
+bigCount$V1o <-bigCount[order(as.numeric(V1))]$V1
+
 bigCount$Prior <- as.numeric(bigCount$Prior)
-bigCount$V1 <- as.factor(bigCount$V1)
-p <- ggplot(bigCount, aes(x = Prior, y = N, fill = V1))
+bigCount$V1o <- as.factor(bigCount$V1)
+setnames(bigCount, "V1o","RootMotion")
+
+bigCount$RootMotion <- as.factor(bigCount$RootMotion)
+setnames(bigCount, "RootMotion","Subsequent Interval")
+bigCount$`Subsequent Interval` <- factor(bigCount$`Subsequent Interval`, levels = c("1","2","3","4","5","6","7","8","9","10","11"))
+
+p <- ggplot(bigCount, aes(x = Prior, y = N, fill= `Subsequent Interval`))
+
 p + geom_bar(stat = "identity") + 
-  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts") 
+  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts") + theme_minimal() + 
+  scale_x_continuous(breaks = unique(bigCount$Prior))
 
 #--------------------------------------------------
 # Remove Involutions
 str(bigCount)
-bigCount$N <- as.numeric(bigCount$N)
-bigCount$V1 <- as.numeric(as.character(bigCount$V1))
-bigCount[, Added := Prior + V1]
+bigCount$RootMotionC <- as.numeric(as.character(bigCount$`Subsequent Interval`))
+bigCount[, Added := Prior + RootMotionC]
 bigCount[Added == 12]
 
 bigCountNoInvo <- bigCount[Added != 12]
@@ -262,10 +271,11 @@ bigCountNoInvo[order(-N)][1:100]
 bigCountNoInvo
 str(bigCountNoInvo)
 #bigCountNoInvo$V1 <- as.integer(bigCount$V1)
-#bigCountNoInvo$V1 <- as.factor(bigCount$V1)
-q <- ggplot(bigCountNoInvo, aes(x = Prior, y = N, fill = V1))
+
+q <- ggplot(bigCountNoInvo, aes(x = Prior, y = N, fill = `Subsequent Interval`))
 q + geom_bar(stat = "identity") + 
-  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts, No Involution") 
+  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts, No Involution") +
+  scale_x_continuous(breaks = unique(bigCountNoInvo$Prior)) + theme_minimal() 
 
 # Make legend so that all 6s are the same
 
