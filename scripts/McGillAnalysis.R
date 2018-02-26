@@ -347,13 +347,20 @@ pie(fourseventenDT$N, labels = fourseventenDT$NAME)
 
 stargazer::stargazer(bigCountNoInvo[, Schema, N][order(-N)][1:15], summary = FALSE)
 
-bigCountNoInvo[order(-N)][1:15]
+bigCountNoInvo[,.(Schema, N)][order(-N)][1:9]
 
 rock <- rock[PosRootMotion != 0]
 rs1.mg <- rock[  , .I[PosRootMotion == "10"]]
 rs1.two.mg <- rs1.mg + 1
 initial.ten <- rock[rs1.two.mg]
 pie(table(initial.ten[PosRootMotion == 7]$RomanNumeral), main = "10 - 7 Schema")
+table(initial.ten[PosRootMotion == 7]$RomanNumeral)
+sum(table(initial.ten[PosRootMotion == 7]$RomanNumeral))
+table(initial.ten[PosRootMotion == 7]$RomanNumeral)/640
+366+185
+366/551
+185/551
+
 # What the The roman numeral is shoing is what second chord would be 
 # Remove labels on everything but the main blobs ("Double Plagal (I-bVII-IV)" and "Blues Cadence (V-IV-I)") 
 
