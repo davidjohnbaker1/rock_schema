@@ -274,7 +274,7 @@ str(bigCountNoInvo)
 
 q <- ggplot(bigCountNoInvo, aes(x = Prior, y = N, fill = `Subsequent Interval`))
 q + geom_bar(stat = "identity") + 
-  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts, No Involution") +
+  labs(x = "Initial Interval", y = "Frequency Count", title = "Temperley Schema Counts") +
   scale_x_continuous(breaks = unique(bigCountNoInvo$Prior)) + theme_minimal() 
 
 # Make legend so that all 6s are the same
